@@ -1,0 +1,49 @@
+/* Layout */
+
+html,
+body {
+  overflow-x: hidden;
+  font-size: 6.5vw;
+  background-color: #272727;
+  color: #313131bb;
+  min-height: 100vh;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  text-shadow: #3131313b 0px 3px 3px;
+}
+
+/* Container */
+
+.card {
+  height: 70vh;
+  width: 50vw;
+  margin: 0 auto;
+  margin-top: 1em;
+  background-color: #ffffff;
+  border-radius: .4em;
+  box-shadow: #3131313b 0px 5px 10px;
+}
+
+/* Buttons */
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.button {
+  margin-top: .5em;
+}
+
+.button a{
+  font-size: 0.8em;
+  background-color: #ff2b6a;
+  padding: 0.2em 0.7em 0.3em 0.7em;
+  border-radius: 2em;
+  box-shadow: #3131313b 0px 5px 10px;
+  transition: 1s;
+}
+
+.button a:hover {
+  background-color: #ca1148;
+}
