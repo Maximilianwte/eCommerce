@@ -1,0 +1,9 @@
+.cart a{
+    border-radius: 50%;
+    background-color: white;
+    color: #222222;
+    padding: .2em .5em;
+    position: absolute;
+    top: 2%;
+    right: 10%;
+}

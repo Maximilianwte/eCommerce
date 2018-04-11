@@ -4,17 +4,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import "./Context.css";
+import "./Header.css";
 
-class Context extends Component {
+class Header extends Component {
   render() {
-    console.log(this.props.Purchase_State)
     return (
       <div className="wrapper">
-        <div className="card"></div>
-        <div className="button">
-        <Link to="/Buy">Kaufen</Link>
-        </div>
+       <div className="cart"><Link to="/Einkaufswagen">{this.props.Cart_Items}</Link></div>
       </div>
     );
   }
@@ -24,7 +20,7 @@ class Context extends Component {
 function mapStateToProps(state) {
   return {
     Purchase_State: state.Purchase_State,
-    Cart_Items: state.Carr_Items,
+    Cart_Items: state.Cart_Items,
   };
 }
 
@@ -33,4 +29,4 @@ const mapActionsToProps = {
   // onSelectMood: selectMood
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Context);
+export default connect(mapStateToProps, mapActionsToProps)(Header);
