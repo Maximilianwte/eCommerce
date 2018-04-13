@@ -9,6 +9,7 @@ import "./App.css";
 import Header from "./Components/Header/Header";
 import Context from "./Components/Context/Context";
 import Cart from "./Components/Cart/Cart";
+import ItemPage from "./Components/ItemPage/ItemPage";
 
 class App extends Component {
   render() {
@@ -17,8 +18,9 @@ class App extends Component {
         <ScrollToTop>
           <div className="App">
           <Header />
+            <Route path="/Item/" component={ItemPage} />
             <Route exact path="/" component={Context} />
-            <Route exact path="/Einkaufswagen" component={Cart} />
+            <Route exact path="/Cart" component={Cart} />
           </div>
         </ScrollToTop>
       </BrowserRouter>

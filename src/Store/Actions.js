@@ -9,11 +9,11 @@ export function purchase_state(i) {
 }
 
 // Action Creator Store
-export const CARD_ITEMS = "CARD_ITEMS:number";
+export const CART_ITEMS = "CART_ITEMS:number";
 
-export function card_items(i) {
+export function cart_items(i) {
   return {
-    type: CARD_ITEMS,
+    type: CART_ITEMS,
     payload: i
   };
 }

@@ -8,7 +8,7 @@ import "./Cart.css";
 
 class Cart extends Component {
   render() {
-    if (this.props.Name_Items === "0") {
+    if (this.props.Name_Items[0] === "None") {
       return (
         <div className="wrapper">
           <div className="container cart">
@@ -27,13 +27,13 @@ class Cart extends Component {
             <h2>Einkaufswagen</h2>
             <div className="cartItems">
               <div className="items">
-                <p>{this.props.Name_Items}</p>
+                <p>{this.props.Name_Items[0]}</p>
               </div>
               <div className="amount">
                 <p>{this.props.Cart_Items}</p>
               </div>
               <div className="prices">
-                <p>{this.props.Price_Items}</p>
+                <p>{this.props.Name_Items[1]}</p>
               </div>
             </div>
           </div>

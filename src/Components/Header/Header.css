@@ -1,9 +1,37 @@
 .cart a{
+    font-size: .7em;
     border-radius: 50%;
-    background-color: white;
-    color: #222222;
+    background-color: rgb(34, 30, 58);
+    color: #ffffff;
     padding: .2em .5em;
-    position: absolute;
-    top: 2%;
-    right: 10%;
+}
+
+.sideBar {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 15vw;
+    height: 100vh;
+    background-color: white;
+    transition: background-color .5s;
+    box-shadow: #27272788 0px 5px 10px;
+}
+
+/* .sideBar:hover {
+    background-color: #ffffffbb;
+} */
+
+.Social {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Social svg {
+    fill: #22222256;
+    height: .7em;
+    transition: .5s;
+}
+
+.Social svg:hover {
+    fill: #49494956;
 }

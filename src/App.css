@@ -10,7 +10,7 @@ body {
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
   text-shadow: #3131313b 0px 3px 3px;
-  background-image: url("./Assets/Background.jpg");
+  background-image: url("./Assets/Back.jpeg");
   background-size: cover;
   background-position-x: 50%;
   background-position-y: 20%;
@@ -29,12 +29,24 @@ body {
 }
 
 .container {
-  width: 100%;
-  height: 60vh;
-  margin-top: 3em;
+  width: 75vw;
+  height: 70vh;
+  margin-left: 25vw;
+  margin-top: 2em;
   background-color: #ffffff;
   color: #272727e0;
+  box-shadow: #27272788 0px 5px 10px;
+  transition: background-color .5s;
+  border-radius: .5em 0em 0em .5em;
 }
+
+.StoreItems img {
+  height: 5em;
+}
+
+/* .container:hover {
+    background-color: #ffffffbb;
+} */
 
 /* Buttons */
 
@@ -60,4 +72,34 @@ a {
 .button a:hover {
   border: solid .08em #d4d4d4;
   color: #d4d4d4;
+}
+
+.quantityButton {
+  margin: 0 auto;
+  width: 50%;
+  height: 2em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.quantityButton button {
+  border-radius: 50%;
+  font-size: .6em;
+  border: none;
+  height: 2em;
+  width: 2em;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.quantityButton button:hover {
+  opacity: .8;
+}
+
+.quantityButton p {
+  background-color: white;
+  color: #272727;
+  padding: 0.1em 1em;
+  border-radius: .1em;
 }

@@ -2,3 +2,9 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.cart h3 {
+    background: linear-gradient(to right, #222222, #22222294);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
