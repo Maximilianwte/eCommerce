@@ -1,0 +1,10 @@
+.StoreItems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+}
+
+.StoreItems a {
+    grid-column: span 1;
+    margin-top: .5em;
+}

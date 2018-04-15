@@ -18,7 +18,7 @@ class App extends Component {
         <ScrollToTop>
           <div className="App">
           <Header />
-            <Route path="/Item/" component={ItemPage} />
+            <Route path="/Item/:slug" component={ItemPage}  />
             <Route exact path="/" component={Context} />
             <Route exact path="/Cart" component={Cart} />
           </div>

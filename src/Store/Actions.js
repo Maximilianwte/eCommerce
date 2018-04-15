@@ -37,3 +37,14 @@ export function name_items(i) {
     payload: i
   };
 }
+
+// Action Creator Store
+export const ITEM_IMAGES = "ITEM_IMAGES:number";
+
+export function item_images(i) {
+  return {
+    type: ITEM_IMAGES,
+    payload: i
+  };
+}
+

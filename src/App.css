@@ -3,17 +3,32 @@
 html,
 body {
   overflow-x: hidden;
-  font-size: 6.5vw;
+  font-size: 1.5vw;
   background-color: #272727;
-  color: #ffffff;
+  color: #ff0062;
   min-height: 100vh;
   text-align: center;
-  font-family: "Josefin Sans", sans-serif;
-  text-shadow: #3131313b 0px 3px 3px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
   background-image: url("./Assets/Back.jpeg");
   background-size: cover;
   background-position-x: 50%;
   background-position-y: 20%;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  justify-content: center;
+}
+
+h1,h2,h3 {
+  font-weight: 800;
+}
+
+h4,h5,h6 {
+  font-weight: 700;
 }
 
 /* Container */
@@ -24,25 +39,47 @@ body {
   margin: 0 auto;
   margin-top: 2em;
   background-color: #ffffff;
-  border-radius: .4em;
+  border-radius: 0.4em;
   box-shadow: #3131313b 0px 5px 10px;
 }
 
 .container {
-  width: 75vw;
-  height: 70vh;
-  margin-left: 25vw;
-  margin-top: 2em;
+  grid-column: span 4;
+  padding: 0.5em 0;
   background-color: #ffffff;
   color: #272727e0;
   box-shadow: #27272788 0px 5px 10px;
-  transition: background-color .5s;
-  border-radius: .5em 0em 0em .5em;
+  transition: background-color 0.5s;
+  border-radius: 2.5em 2.5em 0em 0em;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 25vh;
+  min-height: 72vh;
+}
+
+.inletContainer {
+  margin-top: .5em;
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
 }
 
 .StoreItems img {
-  height: 5em;
+  height: 20em;
 }
+
+@media only screen and (max-width: 681px) {
+  .container {
+    padding: 0 1em;
+    margin-top: 25vh;
+    width: 100%;
+    border-radius: 0;
+    grid-column: span 4;
+  }
+}
+
+
 
 /* .container:hover {
     background-color: #ffffffbb;
@@ -51,26 +88,32 @@ body {
 /* Buttons */
 
 a {
+  font-weight: 700;
   text-decoration: none;
-  color: white;
+  color: #ff0062;
+  transition: color .5s;
+}
+
+a:hover {
+  color: #c2024b;
 }
 
 .button {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
-.button a{
+.button a {
   font-size: 0.8em;
- /*  background-color: #ff2b6a; */
+  /*  background-color: #ff2b6a; */
   padding: 0.2em 0.7em 0.3em 0.7em;
   border-radius: 2em;
-  border: solid .08em #ffffff;
+  border: solid 0.08em #ffffff;
   box-shadow: #3131313b 0px 5px 10px;
   transition: 1s;
 }
 
 .button a:hover {
-  border: solid .08em #d4d4d4;
+  border: solid 0.08em #d4d4d4;
   color: #d4d4d4;
 }
 
@@ -85,21 +128,21 @@ a {
 
 .quantityButton button {
   border-radius: 50%;
-  font-size: .6em;
+  font-size: 0.6em;
   border: none;
   height: 2em;
   width: 2em;
-  transition: .5s;
+  transition: 0.5s;
   cursor: pointer;
 }
 
 .quantityButton button:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .quantityButton p {
   background-color: white;
   color: #272727;
   padding: 0.1em 1em;
-  border-radius: .1em;
+  border-radius: 0.1em;
 }

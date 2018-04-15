@@ -23,37 +23,39 @@ class ItemPage extends Component {
     }
   };
   render() {
-    console.log(this.props.Purchase_State);
+    let ItemId = this.props.match.params.slug - 1;
+    const Item = this.props.Name_Items[ItemId];
     return (
-      <div className="wrapper">
-        <div className="container">
-          <div className="left StoreItems">{/* Img needs to change accordingly. */}
-          <img
-              src={require("../../Assets/StoreItems/1.jpg")}
-              alt="React.js"
-              title="React.js"
-            /> </div>
+      <div className="StoreItems container">
+        <div className="inletContainer">
+          <div className="left StoreItem">
+            <img
+              src={require("../../Assets/StoreItems/" + Item.id + ".jpg")}
+              alt={Item.name}
+              title={Item.name}
+            />
+          </div>
           <div className="right">
             <div className="ItemName">
-              <h4>{this.props.Name_Items[0]}</h4>
+              <h4>{Item.name}</h4>
             </div>
             <div className="Price">
-              <h5>{this.props.Name_Items[1]}</h5>
+              <h5>{Item.price}</h5>
+            </div>
+            <div className="quantityButton">
+              <button id="decrease" onClick={this.changeQuantity}>
+                -
+              </button>
+              <p>{this.props.Cart_Items}</p>
+              <button id="increase" onClick={this.changeQuantity}>
+                +
+              </button>
+            </div>
+            <div className="button">
+              <Link to="/Buy">Bestellen</Link>
             </div>
           </div>
         </div>
-        {/* <div className="quantityButton">
-          <button id="decrease" onClick={this.changeQuantity}>
-            -
-          </button>
-          <p>{this.props.Cart_Items}</p>
-          <button id="increase" onClick={this.changeQuantity}>
-            +
-          </button>
-        </div>
-        <div className="button">
-          <Link to="/Buy">Bestellen</Link>
-        </div> */}
       </div>
     );
   }
@@ -64,7 +66,7 @@ function mapStateToProps(state) {
   return {
     Purchase_State: state.Purchase_State,
     Cart_Items: state.Cart_Items,
-    Name_Items: state.Name_Items,
+    Name_Items: state.Name_Items
   };
 }
 

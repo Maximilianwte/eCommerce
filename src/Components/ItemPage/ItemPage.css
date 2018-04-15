@@ -1,0 +1,16 @@
+
+.left {
+  grid-column: span 2;
+}
+.right {
+  grid-column: span 2;
+}
+
+@media only screen and (min-width: 681px) {
+  .left {
+    grid-column: span 1;
+  }
+  .right {
+    grid-column: span 1;
+  }
+}

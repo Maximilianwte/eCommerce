@@ -1,37 +1,47 @@
-.cart a{
-    font-size: .7em;
-    border-radius: 50%;
-    background-color: rgb(34, 30, 58);
-    color: #ffffff;
-    padding: .2em .5em;
+.cart a {
+  font-size: 0.7em;
+  border-radius: 50%;
+  background-color: rgb(34, 30, 58);
+  color: #ffffff;
+  padding: 0.2em 0.5em;
 }
 
 .sideBar {
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    width: 15vw;
-    height: 100vh;
-    background-color: white;
-    transition: background-color .5s;
-    box-shadow: #27272788 0px 5px 10px;
+  position: fixed;
+  height: 12vh;
+  width: 100%;
+  background-color: white;
+  box-shadow: #27272788 0px 5px 10px;
 }
 
-/* .sideBar:hover {
-    background-color: #ffffffbb;
-} */
+.inlet {
+  height: 100%;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftSide, .rightSide {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+}
 
 .Social {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  height: 2em;
+  justify-content: space-around;
 }
 
 .Social svg {
-    fill: #22222256;
-    height: .7em;
-    transition: .5s;
+  fill: #22222256;
+  height: 1.5em;
+  transition: 0.5s;
 }
 
 .Social svg:hover {
-    fill: #49494956;
+  fill: #49494956;
 }
