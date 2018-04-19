@@ -37,7 +37,7 @@ class Header extends Component {
             </div>
           </div></div>
           <div className="rightSide">
-          <div className="Login"><Link to="/">LOGIN</Link></div>
+          <div className="Login"><Link to="/login">LOGIN</Link></div>
           <div className="">
             <Link to="/Cart">CART ({this.props.Cart_Items})</Link>
           </div>

@@ -28,7 +28,7 @@ class ItemPage extends Component {
     return (
       <div className="StoreItems container">
         <div className="inletContainer">
-          <div className="left StoreItem">
+          <div className="left StoreItem bigItem">
             <img
               src={require("../../Assets/StoreItems/" + Item.id + ".jpg")}
               alt={Item.name}
@@ -52,7 +52,7 @@ class ItemPage extends Component {
               </button>
             </div>
             <div className="button">
-              <Link to="/Buy">Bestellen</Link>
+              <Link to="/cart">In den Warenkorb</Link>
             </div>
           </div>
         </div>

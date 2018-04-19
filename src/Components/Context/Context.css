@@ -8,3 +8,7 @@
     grid-column: span 1;
     margin-top: .5em;
 }
+
+.StoreItems img {
+    border-radius: .5em;
+}

@@ -39,11 +39,11 @@ export function name_items(i) {
 }
 
 // Action Creator Store
-export const ITEM_IMAGES = "ITEM_IMAGES:number";
+export const LOGIN_REDUCER = "LOGIN_STATE:number";
 
-export function item_images(i) {
+export function login_state(i) {
   return {
-    type: ITEM_IMAGES,
+    type: LOGIN_REDUCER,
     payload: i
   };
 }

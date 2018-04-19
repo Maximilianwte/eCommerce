@@ -1,0 +1,39 @@
+.inletContainer h2 {
+  grid-column: span 2;
+}
+
+.BuyerInfo {
+  grid-column: span 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.BuyerInfo form {
+  width: 50%;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.BuyerInfo label {
+   color: #222222a6;
+   padding: 0.3em 0.4em;
+}
+
+.BuyerInfo input {
+  font-size: 1em;
+  padding: 0.3em 0.4em;
+  width: 100%;
+  border: 1px solid #2222220e;
+  border-radius: 0.5em;
+  color: #ff0b7de5;
+}
+
+.element {
+    margin-top: .66em;
+}
+
+form .button {
+    text-align: center;
+    margin-top: 1.5em;
+}

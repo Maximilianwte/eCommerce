@@ -8,9 +8,9 @@ import "./Cart.css";
 
 class Cart extends Component {
   render() {
-    if (this.props.Name_Items[0] === "None") {
-      return (
-        <div className="wrapper">
+    if (this.props.login_State === 1) {
+      if (this.props.Cart_Items === 0) {
+        return (
           <div className="container cart">
             <div className="cartItems">
               <div className="items">
@@ -18,27 +18,36 @@ class Cart extends Component {
               </div>
             </div>
           </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="wrapper">
+        );
+      } else {
+        return (
           <div className="container cart">
             <h2>Einkaufswagen</h2>
             <div className="cartItems">
               <div className="items">
-                <p>{this.props.Name_Items[0]}</p>
+                <p />
               </div>
               <div className="amount">
-                <p>{this.props.Cart_Items}</p>
+                <p />
               </div>
               <div className="prices">
-                <p>{this.props.Name_Items[1]}</p>
+                <p />
               </div>
             </div>
+            <div className="button">
+              <Link to="/info">Zur Kasse</Link>
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
+    }
+    else {
+      return (
+        <div className="container cart">
+            <h2>Login</h2>
+            
+          </div>
+      )
     }
   }
 }
@@ -49,7 +58,8 @@ function mapStateToProps(state) {
     Purchase_State: state.Purchase_State,
     Cart_Items: state.Cart_Items,
     Name_Items: state.Name_Items,
-    Price_Items: state.Price_Items
+    Price_Items: state.Price_Items,
+    Login_State: state.Login_State
   };
 }
 

@@ -8,8 +8,12 @@ import "./App.css";
 
 import Header from "./Components/Header/Header";
 import Context from "./Components/Context/Context";
-import Cart from "./Components/Cart/Cart";
 import ItemPage from "./Components/ItemPage/ItemPage";
+import Login from "./Components/Login/Login";
+import Cart from "./Components/SalesProcess/Cart/Cart";
+import BuyerInfo from "./Components/SalesProcess/BuyerInfo/BuyerInfo";
+import OrderSummary from "./Components/SalesProcess/OrderSummary/OrderSummary";
+import Payment from "./Components/SalesProcess/Payment/Payment";
 
 class App extends Component {
   render() {
@@ -20,7 +24,11 @@ class App extends Component {
           <Header />
             <Route path="/Item/:slug" component={ItemPage}  />
             <Route exact path="/" component={Context} />
-            <Route exact path="/Cart" component={Cart} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/info" component={BuyerInfo} />
+            <Route exact path="/checkorder" component={OrderSummary} />
+            <Route exact path="/payment" component={Payment} />
           </div>
         </ScrollToTop>
       </BrowserRouter>
