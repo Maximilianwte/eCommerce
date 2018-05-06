@@ -1,9 +1,19 @@
 .sideBar {
   position: fixed;
-  height: 12vh;
+  height: 4em;
+  top: 0%;
   width: 100%;
-  background-color: white;
-  box-shadow: #27272788 0px 5px 10px;
+  background-color: #222222;
+  
+  box-shadow: #2727275b 0px 3px 10px;
+}
+
+.sideBar a {
+  color: #ffffff;
+}
+
+a:hover {
+  color: #ffcee1;
 }
 
 .inlet {
@@ -16,9 +26,10 @@
 }
 
 .leftSide, .rightSide {
-  width: 25%;
+  width: 10rem;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .Social {
