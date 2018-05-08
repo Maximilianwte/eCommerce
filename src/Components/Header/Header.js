@@ -12,7 +12,7 @@ class Header extends Component {
       <div className="sideBar">
         <div className="inlet">
         <div className="leftSide"><div className="Logo"><Link to="/">HOME</Link></div>
-        <div className="Social">
+      {/*   <div className="Social">
             <div className="Social" id="Facebook">
               <a
                 target="_blank"
@@ -35,7 +35,7 @@ class Header extends Component {
                 </svg>
               </a>
             </div>
-          </div></div>
+          </div> */}</div>
           <div className="rightSide">
           <div className="Login"><Link to="/login">LOGIN</Link></div>
           <div className="">

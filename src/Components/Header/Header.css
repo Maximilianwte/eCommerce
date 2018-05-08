@@ -4,6 +4,7 @@
   top: 0%;
   width: 100%;
   background-color: #222222;
+  background: linear-gradient(175deg, #363636, #222222);
   
   box-shadow: #2727275b 0px 3px 10px;
 }
@@ -12,8 +13,8 @@
   color: #ffffff;
 }
 
-a:hover {
-  color: #ffcee1;
+.sideBar a:hover {
+  color: #f3e0e0;
 }
 
 .inlet {
@@ -40,11 +41,11 @@ a:hover {
 }
 
 .Social svg {
-  fill: #22222256;
-  height: 1.5em;
+  fill: #ffffff;
+  height: 2em;
   transition: 0.5s;
 }
 
 .Social svg:hover {
-  fill: #49494956;
+  fill: rgba(255, 255, 255, 0.911);
 }

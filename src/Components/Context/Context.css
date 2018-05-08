@@ -1,49 +1,76 @@
 .Store {
-    margin-top: 4em;
-    height: 40em;
-    width: 100%;
+  width: 100%;
 }
 
 .StoreItems a {
-    margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .highlightCard {
-    height: 45em;
+  min-height: 45em;
+  /* background: linear-gradient(-150deg, #fff4c2, #ffda8a); */
 }
 
+.highlightCard a {
+}
 
 .highlightCard h2 {
-    margin-top: 5em;
-    margin-bottom: -1em;
+  padding-top: 4em;
+  margin-top: 1.5em;
+  margin-bottom: -1em;
 }
 
 .highlightCard img {
-    height: 30em;
-    margin-bottom: 3em;
+  height: 30em;
+  margin-bottom: 3em;
 }
 
 .banner {
-    width: 100%;
-    background-color: #ff5b68;
-    height: 15em;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  background: linear-gradient(180deg, #ff4756 30%, #e92b3b);
+  height: 15em;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
 }
 
 .itemsFront ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 30rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 30rem;
+  list-style: none;
+  padding: 0;
 }
 
 .itemsFront li {
-    width: 50%;
+  width: 100%;
+  grid-column: span 1;
 }
 
 .itemsFront ul img {
-    height: 15em;
+  height: 15em;
+  padding: 0.8em 0.5em;
+}
+/* 
+#Matte {
+  background: linear-gradient(160deg, #c2f1ff, #6eb9ff);
+}
+
+#Kerze {
+  background: linear-gradient(-150deg, #fff4c2, #ffda8a);
+}
+ */
+
+@media only screen and (max-width: 1024px) {
+  .itemsFront ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .itemsFront li {
+    height: 40vw;
+  }
 }

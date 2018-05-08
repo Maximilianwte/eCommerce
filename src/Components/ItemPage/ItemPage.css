@@ -1,19 +1,39 @@
-.bigItem {
-  font-size: 1.5em;
+.ItemPage {
+  width: 100%;
+  min-height: 30em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.left {
+.top {
   grid-column: span 2;
+  background-size: cover;
+  background-position-y: 25%;
+  margin-top: 4em;
+  height: 30vh;
 }
+.left,
 .right {
-  grid-column: span 2;
+  grid-column: span 1;
+  margin-top: 6em;
+  margin-bottom: 5em;
 }
 
-@media only screen and (min-width: 681px) {
-  .left {
-    grid-column: span 1;
+.left img {
+  height: 30em;
+  max-width: 100%;
+}
+
+.top#Buddha {
+  background-image: url("../../Assets/StoreItems/BuddhaBg.jpg");
+}
+
+@media only screen and (max-width: 801px) {
+  .ItemPage {
+    grid-template-columns: repeat(1, 1fr);
   }
-  .right {
-    grid-column: span 1;
-  }
+
+.top {
+  grid-column: span 1;
+}
 }

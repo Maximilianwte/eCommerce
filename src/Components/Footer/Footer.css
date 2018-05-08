@@ -1,0 +1,25 @@
+.footer {
+  min-height: 10em;
+  background-color: #222222;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: white;
+}
+
+.footerItem {
+  grid-column: span 1;
+}
+
+.footerItem ul {
+  padding: 2em 0em;
+}
+
+.footerItem#right img {
+  height: 6em;
+}
+
+@media only screen and (max-width: 681px) {
+  .footer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
