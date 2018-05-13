@@ -1,16 +1,24 @@
 /* Layout */
 
+:root {
+  --bg-color-main: #222222;
+  --bg-color-white: #ffffff;
+  --bg-color-highlight: #ff0062;
+  --color-main: #ffffff;
+  --color-secondary: #6f8aff;
+  --color-highlight: #ff0062;
+}
+
 html,
 body {
   overflow-x: hidden;
   font-size: 1rem;
-  background-color: #222222;
   color: #222222;
   min-height: 100vh;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  background-color: white;
+  background-color: var(--bg-color-white);
   background-position-x: 70%;
   background-position-y: 20%;
 }
@@ -42,7 +50,7 @@ h4,h5,h6 {
   width: 50vw;
   margin: 0 auto;
   margin-top: 2em;
-  background-color: #ffffff;
+  background-color: var(--bg-color-white);
   box-shadow: #3131313b 0px 5px 10px;
 }
 
@@ -89,7 +97,7 @@ a:hover {
   font-size: 1.5em;
   /*  background-color: #ff2b6a; */
   padding: 0.2em 0.7em 0.3em 0.7em;
-  border: solid 0.08em #ffffff;
+  border: solid 0.08em var(--color-main);
   box-shadow: #3131313b 0px 5px 10px;
   transition: 1s;
 }

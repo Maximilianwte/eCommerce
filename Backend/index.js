@@ -1,16 +1,16 @@
-const cookieSession = require("cookie-session");
 const passport = require("passport");
 const express = require('express')
 const mongoose = require("mongoose");
 
 const keys = require("./config/keys");
-require("./Database/Models/Users");
+require("./models/Customers");
 require("./services/passport");
 
 const app = express()
 
 mongoose.connect(keys.mongoURI);
 
+const cookieSession = require("cookie-session");
 app.use(
   cookieSession({
     // Wie lange der Cookie aktiv ist. Müssen wir in Millisekunden angeben. Das sind 30 Tage.
@@ -20,10 +20,9 @@ app.use(
   })
 );
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); 
 
 require("./routes/authRoutes")(app);
-require("./routes/dataRoutes")(app);
 
 // Get the Port from Heroku or if not declared use 5000.
 const PORT = process.env.PORT || 5000;

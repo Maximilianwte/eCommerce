@@ -1,19 +1,20 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-var FacebookStrategy = require("passport-facebook").Strategy;
+/* var FacebookStrategy = require("passport-facebook").Strategy; */
 const mongoose = require("mongoose");
 
 const keys = require("../config/keys");
-const User = mongoose.model("users");
+const Customer = mongoose.model("Customers");
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
+passport.serializeUser((customer, done) => {
+  done(null, customer.id);
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
+  Customer.findById(id).then(customer => {
+    done(null, customer);
   });
+  console.log("oAuth Done.");
 });
 
 /* oAuth2.0 Google */
@@ -28,13 +29,17 @@ passport.use(
     // Das bedeutet dass wenn wir ein AccessToken erhalten, das einfach über console.log ausgegeben werden soll.
     // Das .then ist ein Promise. Den benutzen wir für async Code wie hier gerade. Darin wird eine Arrow Function eingeschlossen.
     (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
+      // Zum verstehen von Promises: Wenn der Promise fertig ist wird das Ergebnis als existingCustomer(vor der Arrow Function) gespeichert. Damit können wir dann was machen.
+      Customer.findOne({ googleId: profile.id }).then(existingCustomer => {
+        if (existingCustomer) {
+          done(null, existingCustomer);
         } else {
-          new User({ googleId: profile.id })
+          new Customer({
+            googleId: profile.id
+          })
             .save()
-            .then(user => done(null, user));
+            .then(customer => done(null, customer));
+          // Ab der done Funktion -> failed to serialize customer.
         }
       });
     }
@@ -50,14 +55,18 @@ passport.use(
       clientSecret: keys.facebookClientSecret,
       callbackURL: "/auth/facebook/callback"
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ facebookId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
+     (accessToken, refreshToken, profile, done) => {
+      // Zum verstehen von Promises: Wenn der Promise fertig ist wird das Ergebnis als existingCustomer(vor der Arrow Function) gespeichert. Damit können wir dann was machen.
+      Customer.findOne({ googleId: profile.id }).then(existingCustomer => {
+        if (existingCustomer) {
+          done(null, existingCustomer);
         } else {
-          new User({ facebookId: profile.Id })
+          new Customer({
+            googleId: profile.id
+          })
             .save()
-            .then(user => done(null, user));
+            .then(customer => done(null, customer));
+          // Ab der done Funktion -> failed to serialize customer.
         }
       });
     }

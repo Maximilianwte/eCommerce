@@ -10,7 +10,7 @@
 }
 
 .sideBar a {
-  color: #ffffff;
+  color: var(--color-main);
 }
 
 .sideBar a:hover {
