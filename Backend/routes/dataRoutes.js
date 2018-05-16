@@ -1,10 +1,23 @@
 const mongoose = require("mongoose");
 
 const Customer = mongoose.model("Customers");
-const Items = mongoose.model("Items");
-const Orders = mongoose.model("Orders");
+const Item = mongoose.model("Items");
+const Order = mongoose.model("Orders");
+
+/* new Order({
+ _customerId: "001",
+ _itemId: [001],
+ value: "19.99€",
+ date: Date.now()
+}).save() */
+
+/* // Working Query without the get handling.
+Order.findOne({ _customerId: "1"}).then(orders => console.log(orders)); */
 
 module.exports = app => {
+  app.post("/api/processOrderX", (req, res) => {
+    console.log(req.body);
+  });  
   // Api get Items from MongoDB.
   app.get("/api/getItems", (req, res) => {
     Items.findOne().exec(function(err, items) {
@@ -15,7 +28,7 @@ module.exports = app => {
 
   // Api get orders from active client. This is used for ORDERS from ACCOUNT.
   app.get("/api/getOrders", (req, res) => {
-    Orders.findOne({ customerID: "Put the id of the customer here." }).exec(
+    Order.find({ _customerId: "001" }).exec(
       function(err, orders) {
         if (err) return handleError(err);
         res.send(orders);
@@ -27,7 +40,7 @@ module.exports = app => {
   app.post("/api/processOrder", (req, res) => {
     if (!req.user) {
     } else {
-      const { customerID, itemId } = req.body;
+      const { _customerId, _itemId } = req.body;
 
       /*   // While there are items in the order add all prices up.
       const orderValueVar
@@ -44,3 +57,5 @@ module.exports = app => {
     }
   });
 };
+
+

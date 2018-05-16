@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import Login from "../../Login/Login";
+
 import "./Cart.css";
 
 class Cart extends Component {
   render() {
-    if (this.props.login_State === 1) {
+    if (this.props.Login_State === 1) {
       if (this.props.Cart_Items === 0) {
         return (
-          <div className="container cart">
+          <div className="highlightCard cart">
             <div className="cartItems">
               <div className="items">
                 <h3>Dein Einkaufswagen ist noch leer.</h3>
@@ -21,7 +23,7 @@ class Cart extends Component {
         );
       } else {
         return (
-          <div className="container cart">
+          <div className="highlightCard cart">
             <h2>Einkaufswagen</h2>
             <div className="cartItems">
               <div className="items">
@@ -40,14 +42,8 @@ class Cart extends Component {
           </div>
         );
       }
-    }
-    else {
-      return (
-        <div className="container cart">
-            <h2>Login</h2>
-            
-          </div>
-      )
+    } else {
+      return <Login />;
     }
   }
 }
