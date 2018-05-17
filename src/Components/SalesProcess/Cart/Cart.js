@@ -23,20 +23,28 @@ class Cart extends Component {
         );
       } else {
         return (
-          <div className="highlightCard cart">
+          <div className="highlightCard">
             <h2>Einkaufswagen</h2>
-            <div className="cartItems">
-              <div className="items">
-                <p />
-              </div>
-              <div className="amount">
-                <p />
-              </div>
-              <div className="prices">
-                <p />
+            <div className="cartItemsOuter">
+              <div className="cartItems">
+                <div className="items cartChild">
+                  <ul>
+                    <li>Buddha</li>
+                  </ul>
+                </div>
+                <div className="amount cartChild">
+                  <ul>
+                    <li>2</li>
+                  </ul>
+                </div>
+                <div className="prices cartChild">
+                  <ul>
+                    <li>18.99€</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div className="checkButton">
+            <div className="checkButton" id="cart">
               <Link to="/info">Zur Kasse</Link>
             </div>
           </div>

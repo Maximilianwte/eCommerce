@@ -1,6 +1,20 @@
+.cartItemsOuter {
+  width: 100%;
+  background-color: #fce9ee;
+  margin-top: 4em;
+}
+
 .cartItems {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  padding: 6em 0 4em 0;
+  width: auto;
+}
+
+.cartChild {
+  padding: 0 3em;
+  font-weight: 800;
+  font-size: 1.4em;
 }
 
 .cart {
@@ -11,5 +25,6 @@
   justify-content: center;
 }
 
-.cartItems {
+.checkButton#cart {
+  margin-top: 4em;
 }
