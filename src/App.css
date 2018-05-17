@@ -113,18 +113,19 @@ a:hover {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 5em;
 }
 
 .quantityButton button {
   font-size: 1.2em;
-  border-radius: 50%;
+  border-radius: .8em;
+  padding: 0.5em 1.5em;
   border: none;
-  height: 2.2em;
-  width: 2em;
   transition: 0.5s;
   cursor: pointer;
-  background-color: #ff0062;
-  color: white;
+  background-color: white;
+  border: 0.2em solid #ff0062;
+  color: #ff0062;
   box-shadow: #2727273b 0px 2px 5px;
 }
 
@@ -137,4 +138,21 @@ a:hover {
   color: #272727;
   padding: 0.1em 1em;
   border-radius: 0.1em;
+}
+
+.checkButton button, .checkButton a {
+  margin-top: 1em;
+  font-size: 1.4em;
+  border-radius: .8em;
+  padding: 0.6em 1.5em;
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+  background-color: #ff0062;
+  color: white;
+  box-shadow: #2727273b 0px 2px 5px;
+}
+
+.checkButton button:hover, .checkButton a:hover{
+  background-color: #d40051;
 }

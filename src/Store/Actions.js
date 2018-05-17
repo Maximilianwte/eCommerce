@@ -19,6 +19,16 @@ export function cart_items(i) {
 }
 
 // Action Creator Store
+export const ADD_CART = "ADD_CART:number";
+
+export function add_cart(i) {
+  return {
+    type: ADD_CART,
+    payload: i
+  };
+}
+
+// Action Creator Store
 export const PRICE_ITEMS = "PRICE_ITEMS:number";
 
 export function price_items(i) {

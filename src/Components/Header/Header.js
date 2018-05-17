@@ -11,8 +11,11 @@ class Header extends Component {
     return (
       <div className="sideBar">
         <div className="inlet">
-        <div className="leftSide"><div className="Logo"><Link to="/">HOME</Link></div>
-      {/*   <div className="Social">
+          <div className="leftSide">
+            <div className="Logo">
+              <Link to="/">HOME</Link>
+            </div>
+            {/*   <div className="Social">
             <div className="Social" id="Facebook">
               <a
                 target="_blank"
@@ -35,13 +38,35 @@ class Header extends Component {
                 </svg>
               </a>
             </div>
-          </div> */}</div>
-          <div className="rightSide">
-          <div className="Login"><Link to="/login">LOGIN</Link></div>
-          <div className="">
-            <Link to="/Cart">CART ({this.props.Cart_Items})</Link>
+          </div> */}
           </div>
-          </div>     
+          <div className="rightSide">
+            <div className="Login">
+              <Link to="/login">LOGIN</Link>
+            </div>
+            <div className="Cart">
+              <Link to="/Cart">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.5 68">
+                  <defs />
+                  <g id="Ebene_2" data-name="Ebene 2">
+                    <g id="Ebene_1-2" data-name="Ebene 1">
+                      <polygon
+                        className="cls-1"
+                        points="21 13.5 90 13.5 87 35.5 30 45.5 21 13.5"
+                      />
+                      <path
+                        className="cls-1"
+                        d="M72,57.5H33.72c-5.08-16.81-10-33.18-15.1-50A8.68,8.68,0,0,0,2.5,8.5"
+                      />
+                      <circle className="cls-2" cx="34.5" cy="61" r="7" />
+                      <circle className="cls-2" cx="73.5" cy="61" r="7" />
+                    </g>
+                  </g>
+                </svg>{" "}
+                ({this.props.Cart_Items})
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     );

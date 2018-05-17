@@ -36,7 +36,7 @@ class Cart extends Component {
                 <p />
               </div>
             </div>
-            <div className="button">
+            <div className="checkButton">
               <Link to="/info">Zur Kasse</Link>
             </div>
           </div>

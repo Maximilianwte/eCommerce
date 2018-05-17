@@ -5,35 +5,46 @@
 .BuyerInfo {
   grid-column: span 2;
   width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.BuyerInfo form {
-  width: 50%;
-  font-size: 1.1em;
-  text-align: left;
-}
-
-.BuyerInfo label {
-   color: #222222a6;
-   padding: 0.3em 0.4em;
-}
-
-.BuyerInfo input {
-  font-size: 1em;
-  padding: 0.3em 0.4em;
-  width: 100%;
-  border: 1px solid #2222220e;
-  border-radius: 0.5em;
-  color: #ff0b7de5;
+  
 }
 
 .element {
-    margin-top: .66em;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 1em;
 }
 
-form .button {
-    text-align: center;
-    margin-top: 1.5em;
+form {
+  font-size: 1.2em;
+  width: 100%;
+}
+
+input {
+  font-size: 1.2em;
+  width: 100%;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  border: none;  
+}
+
+.button input {
+  font-size: 1.2em;
+  background-color: #fce9ee00;
+  width: auto;
+  padding: 0.4em 2em;
+  border-radius: 2em;
+  border: .3em solid white;
+  color: white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+input:focus {
+  
+  background-color: #ffdce5;
+}
+
+.button input:hover {
+  color: #ff5582;
+  border: .3em solid #ff5582;
 }

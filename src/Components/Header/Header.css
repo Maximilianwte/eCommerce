@@ -49,3 +49,17 @@
 .Social svg:hover {
   fill: rgba(255, 255, 255, 0.911);
 }
+
+.Cart a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 3.5em;
+}
+
+.Cart svg {
+  fill: none;
+  stroke: white;
+  stroke-width: .3em;
+  height: 1.3em;
+}

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import "./ItemPage.css";
-import { cart_items } from "../../Store/Actions";
+import { cart_items, add_cart } from "../../Store/Actions";
 
 class ItemPageBuddha extends Component {
   constructor(props) {
@@ -14,13 +14,19 @@ class ItemPageBuddha extends Component {
     this.changeQuantity = this.changeQuantity.bind(this);
   }
   changeQuantity = e => {
-    if (e.target.id === "decrease" && this.props.Cart_Items != 0) {
-      this.props.onChangeQuantity(this.props.Cart_Items - 1);
-    } else if (e.target.id === "increase" && this.props.Cart_Items != 9) {
-      this.props.onChangeQuantity(this.props.Cart_Items + 1);
+    if (e.target.id === "decrease" && this.props.AddToCart != 0) {
+      this.props.onChangeQuantity(this.props.AddToCart - 1);
+    } else if (e.target.id === "increase" && this.props.AddToCart != 9) {
+      this.props.onChangeQuantity(this.props.AddToCart + 1);
     } else {
     }
   };
+  addToCart = () => {
+    if (this.props.AddToCart != 0) {
+      this.props.onChangeChart(this.props.AddToCart + this.props.Cart_Items);
+      this.props.onChangeQuantity(0);
+    }
+  }
   render() {
     return (
       <div className="ItemPage" id="Buddha">
@@ -39,10 +45,13 @@ class ItemPageBuddha extends Component {
             <button id="decrease" onClick={this.changeQuantity}>
               -
             </button>
-            <p>{this.props.Cart_Items}</p>
+            <p>{this.props.AddToCart}</p>
             <button id="increase" onClick={this.changeQuantity}>
               +
             </button>
+          </div>
+          <div className="checkButton">
+            <button onClick={this.addToCart}>In den Einkaufswagen</button>
           </div>
         </div>
       </div>
@@ -55,14 +64,16 @@ function mapStateToProps(state) {
   return {
     Purchase_State: state.Purchase_State,
     Cart_Items: state.Cart_Items,
-    Name_Items: state.Name_Items
+    Name_Items: state.Name_Items,
+    AddToCart: state.AddToCart
   };
 }
 
 // We connect our components function (onSelectMood) to the actionCreator (selectMood)
 const mapActionsToProps = {
   // onSelectMood: selectMood
-  onChangeQuantity: cart_items
+  onChangeQuantity: add_cart,
+  onChangeChart: cart_items,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(ItemPageBuddha);

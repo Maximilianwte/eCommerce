@@ -15,10 +15,10 @@ class Footer extends Component {
         </div>
         <div className="footerItem" id="middle">
           <ul>
-            <li>Home</li>
-            <li>Login</li>
-            <li>Cart</li>
-            <li>Imprint</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/cart">Cart</Link></li>
+            <li><Link to="/imprint">Imprint</Link></li>
           </ul>
         </div>
         <div className="footerItem" id="right">
