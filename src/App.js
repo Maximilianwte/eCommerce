@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
-import $ from "jquery";
 
 import ScrollToTop from "./ScrollToTop";
 

@@ -5,26 +5,33 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import "./ItemPage.css";
-import { cart_items, add_cart } from "../../Store/Actions";
+import { cart_count, add_cart, cart_items } from "../../Store/Actions";
 
 class ItemPageBuddha extends Component {
   constructor(props) {
     super(props);
 
     this.changeQuantity = this.changeQuantity.bind(this);
+    this.state = {
+      thisItemId: "001",
+      thisItemValue: 19.99,
+    }
   }
   changeQuantity = e => {
-    if (e.target.id === "decrease" && this.props.AddToCart != 0) {
+    if (e.target.id === "decrease" && this.props.AddToCart !== 0) {
       this.props.onChangeQuantity(this.props.AddToCart - 1);
-    } else if (e.target.id === "increase" && this.props.AddToCart != 9) {
+    } else if (e.target.id === "increase" && this.props.AddToCart !== 9) {
       this.props.onChangeQuantity(this.props.AddToCart + 1);
     } else {
     }
   };
   addToCart = () => {
     if (this.props.AddToCart != 0) {
-      this.props.onChangeChart(this.props.AddToCart + this.props.Cart_Items);
+      this.props.onChangeCart(this.props.AddToCart + this.props.Cart_Count);
+      const itemTimesValue = this.state.thisItemValue * this.props.AddToCart;
+      this.props.onChangeCartItems([this.state.thisItemId,this.props.AddToCart, itemTimesValue])
       this.props.onChangeQuantity(0);
+      console.log(this.props.Cart_Items);
     }
   }
   render() {
@@ -63,9 +70,10 @@ class ItemPageBuddha extends Component {
 function mapStateToProps(state) {
   return {
     Purchase_State: state.Purchase_State,
-    Cart_Items: state.Cart_Items,
+    Cart_Count: state.Cart_Count,
     Name_Items: state.Name_Items,
-    AddToCart: state.AddToCart
+    AddToCart: state.AddToCart,
+    Cart_Items: state.Cart_Items,
   };
 }
 
@@ -73,7 +81,8 @@ function mapStateToProps(state) {
 const mapActionsToProps = {
   // onSelectMood: selectMood
   onChangeQuantity: add_cart,
-  onChangeChart: cart_items,
+  onChangeCart: cart_count,
+  onChangeCartItems: cart_items
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(ItemPageBuddha);

@@ -9,11 +9,11 @@ export function purchase_state(i) {
 }
 
 // Action Creator Store
-export const CART_ITEMS = "CART_ITEMS:number";
+export const CART_COUNT = "CART_COUNT:number";
 
-export function cart_items(i) {
+export function cart_count(i) {
   return {
-    type: CART_ITEMS,
+    type: CART_COUNT,
     payload: i
   };
 }
@@ -29,21 +29,11 @@ export function add_cart(i) {
 }
 
 // Action Creator Store
-export const PRICE_ITEMS = "PRICE_ITEMS:number";
+export const CART_ITEMS = "CART_ITEMS:number";
 
-export function price_items(i) {
+export function cart_items(i) {
   return {
-    type: PRICE_ITEMS,
-    payload: i
-  };
-}
-
-// Action Creator Store
-export const NAME_ITEMS = "NAME_ITEMS:number";
-
-export function name_items(i) {
-  return {
-    type: NAME_ITEMS,
+    type: CART_ITEMS,
     payload: i
   };
 }

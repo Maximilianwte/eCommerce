@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 import "./Header.css";
 
@@ -63,7 +62,7 @@ class Header extends Component {
                     </g>
                   </g>
                 </svg>{" "}
-                ({this.props.Cart_Items})
+                ({this.props.Cart_Count})
               </Link>
             </div>
           </div>
@@ -77,7 +76,7 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     Purchase_State: state.Purchase_State,
-    Cart_Items: state.Cart_Items
+    Cart_Count: state.Cart_Count
   };
 }
 
