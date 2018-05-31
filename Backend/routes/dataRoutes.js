@@ -15,9 +15,6 @@ const Order = mongoose.model("Orders");
 Order.findOne({ _customerId: "1"}).then(orders => console.log(orders)); */
 
 module.exports = app => {
-  app.post("/api/processOrderX", (req, res) => {
-    console.log(req.body);
-  });  
   // Api get Items from MongoDB.
   app.get("/api/getItems", (req, res) => {
     Items.findOne().exec(function(err, items) {
@@ -28,12 +25,10 @@ module.exports = app => {
 
   // Api get orders from active client. This is used for ORDERS from ACCOUNT.
   app.get("/api/getOrders", (req, res) => {
-    Order.find({ _customerId: "001" }).exec(
-      function(err, orders) {
-        if (err) return handleError(err);
-        res.send(orders);
-      }
-    );
+    Order.find({ _customerId: "001" }).exec(function(err, orders) {
+      if (err) return handleError(err);
+      res.send(orders);
+    });
   });
 
   // Process the order that the user sends. Req.user is the user string that is send with the request from the client side.
@@ -51,11 +46,17 @@ module.exports = app => {
         _customerId: req.user.id,
         // Maybe wrong and we just have to use _itemId,
         _itemId: Items.split(",").map(id => ({ id: id.trim() })),
-       // value: orderValue,
+        // value: orderValue,
         date: Date.now()
       });
     }
   });
+
+  // HERE WE HANDLER A AXIOS POST REQUEST FOR TESTING PURPOSES.
+  app.post("/api/test_post", function(req, res) {
+    const body = req.body.test_data;
+    console.log(req.body);
+    res.set("Content-Type", "text/plain");
+    res.send(`You sent: ${body} to Express`);
+  });
 };
-
-
