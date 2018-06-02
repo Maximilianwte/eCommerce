@@ -11,6 +11,12 @@ import Login from "../../Login/Login";
 import "./Cart.css";
 
 class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      item_Name: []
+    };
+  }
   getOrder = async () => {
     const response = await fetch("/api/getOrders");
     const body = await response.json();
@@ -27,7 +33,21 @@ class Cart extends Component {
       console.log(res);
     });
   };
+  componentDidMount() {
+    this.props.Cart_Items.Id.map((item, i) => {
+      if (item === "001") {
+        // The problem is that this.state.item_Name is 0 inside a normal function (this context prop.)
+        console.log(this.state.item_Name)
+        this.setState({
+          item_Name: [...this.state.item_Name, "Buddha"]
+        });
+      }
+    })
 
+  /*   setTimeout(function () {
+      console.log(this.state.item_Name)
+    },4000); */
+  }
   render() {
     if (this.props.Login_State === 1) {
       if (this.props.Cart_Items === 0) {
@@ -47,18 +67,24 @@ class Cart extends Component {
             <div className="cartItemsOuter">
               <div className="cartItems">
                 <div className="items cartChild">
-                  <ul>
-                    <li>Buddha</li>
+                 <ul>
+                    {this.state.item_Name.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
                   </ul>
                 </div>
                 <div className="amount cartChild">
                   <ul>
-                    <li>2</li>
+                    {this.props.Cart_Items.Amount.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
                   </ul>
                 </div>
                 <div className="prices cartChild">
                   <ul>
-                    <li>18.99€</li>
+                    {this.props.Cart_Items.Price.map((item, i) => (
+                      <li key={i}>{item}€</li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -81,10 +107,7 @@ class Cart extends Component {
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {
   return {
-    Purchase_State: state.Purchase_State,
     Cart_Items: state.Cart_Items,
-    Name_Items: state.Name_Items,
-    Price_Items: state.Price_Items,
     Login_State: state.Login_State
   };
 }

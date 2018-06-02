@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import "./ItemPage.css";
-import { cart_count, add_cart, cart_items } from "../../Store/Actions";
+import { cart_count, cart_items } from "../../Store/Actions";
 
 class ItemPageBuddha extends Component {
   constructor(props) {
@@ -15,25 +14,36 @@ class ItemPageBuddha extends Component {
     this.state = {
       thisItemId: "001",
       thisItemValue: 19.99,
-    }
+      addToCart: 0
+    };
   }
   changeQuantity = e => {
-    if (e.target.id === "decrease" && this.props.AddToCart !== 0) {
-      this.props.onChangeQuantity(this.props.AddToCart - 1);
-    } else if (e.target.id === "increase" && this.props.AddToCart !== 9) {
-      this.props.onChangeQuantity(this.props.AddToCart + 1);
+    if (e.target.id === "decrease" && this.state.addToCart !== 0) {
+      this.setState({
+        addToCart: this.state.addToCart - 1
+      });
+    } else if (e.target.id === "increase" && this.state.addToCart !== 9) {
+      this.setState({
+        addToCart: this.state.addToCart + 1
+      });
     } else {
     }
   };
   addToCart = () => {
-    if (this.props.AddToCart != 0) {
-      this.props.onChangeCart(this.props.AddToCart + this.props.Cart_Count);
-      const itemTimesValue = this.state.thisItemValue * this.props.AddToCart;
-      this.props.onChangeCartItems([this.state.thisItemId,this.props.AddToCart, itemTimesValue])
-      this.props.onChangeQuantity(0);
-      console.log(this.props.Cart_Items);
+    if (this.state.addToCart != 0) {
+      this.props.onChangeCart(this.state.addToCart + this.props.Cart_Count);
+      const itemTimesValue = this.state.thisItemValue * this.state.addToCart;
+      this.props.onChangeCartItems([
+        this.state.thisItemId,
+        this.state.addToCart,
+        itemTimesValue
+      ]);
+      this.setState({
+        addToCart: 0
+      });
     }
-  }
+    console.log(this.props.Cart_Items);
+  };
   render() {
     return (
       <div className="ItemPage" id="Buddha">
@@ -52,7 +62,7 @@ class ItemPageBuddha extends Component {
             <button id="decrease" onClick={this.changeQuantity}>
               -
             </button>
-            <p>{this.props.AddToCart}</p>
+            <p>{this.state.addToCart}</p>
             <button id="increase" onClick={this.changeQuantity}>
               +
             </button>
@@ -69,18 +79,14 @@ class ItemPageBuddha extends Component {
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {
   return {
-    Purchase_State: state.Purchase_State,
     Cart_Count: state.Cart_Count,
-    Name_Items: state.Name_Items,
-    AddToCart: state.AddToCart,
-    Cart_Items: state.Cart_Items,
+    Cart_Items: state.Cart_Items
   };
 }
 
 // We connect our components function (onSelectMood) to the actionCreator (selectMood)
 const mapActionsToProps = {
   // onSelectMood: selectMood
-  onChangeQuantity: add_cart,
   onChangeCart: cart_count,
   onChangeCartItems: cart_items
 };

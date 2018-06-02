@@ -1,18 +1,14 @@
 import { combineReducers } from "redux";
-import purchase_stateReducer from "./purchase_stateReducer";
-import cart_countReducer from "./cart_countReducer";
+import cartCount_Reducer from "./cartCount_Reducer";
 import login_Reducer from "./login_Reducer";
-import addToCart_Reducer from "./addToCart_Reducer";
-import cart_itemsReducer from "./cart_itemsReducer";
+import cartItems_Reducer from "./cartItems_Reducer";
 
 
 
 const allReducers = combineReducers({
-    Purchase_State: purchase_stateReducer,
-    Cart_Count: cart_countReducer,
-    AddToCart: addToCart_Reducer,
+    Cart_Count: cartCount_Reducer,
     Login_State: login_Reducer,
-    Cart_Items: cart_itemsReducer,
+    Cart_Items: cartItems_Reducer,
 });
 
 export default allReducers ;
