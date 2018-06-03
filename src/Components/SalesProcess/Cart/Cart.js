@@ -34,19 +34,13 @@ class Cart extends Component {
     });
   };
   componentDidMount() {
-    this.props.Cart_Items.Id.map((item, i) => {
+    const nextState = this.props.Cart_Items.Id.map((item, i) => {
       if (item === "001") {
-        // The problem is that this.state.item_Name is 0 inside a normal function (this context prop.)
-        console.log(this.state.item_Name)
-        this.setState({
-          item_Name: [...this.state.item_Name, "Buddha"]
-        });
+        return "Buddha";
+      } else {
       }
-    })
-
-  /*   setTimeout(function () {
-      console.log(this.state.item_Name)
-    },4000); */
+    });
+    this.setState({ item_name: nextstate });
   }
   render() {
     if (this.props.Login_State === 1) {
@@ -67,7 +61,7 @@ class Cart extends Component {
             <div className="cartItemsOuter">
               <div className="cartItems">
                 <div className="items cartChild">
-                 <ul>
+                  <ul>
                     {this.state.item_Name.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}

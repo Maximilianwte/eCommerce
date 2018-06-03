@@ -6,6 +6,7 @@ import ScrollToTop from "./ScrollToTop";
 import "./App.css";
 
 import Header from "./Components/Header/Header";
+import HeaderLoggedIn from "./Components/Header/HeaderLoggedIn";
 import Footer from "./Components/Footer/Footer";
 import Context from "./Components/Context/Context";
 /* import ItemPage from "./Components/ItemPage/ItemPage"; */
@@ -22,7 +23,14 @@ class App extends Component {
       <BrowserRouter>
         <ScrollToTop>
           <div className="App">
-            <Header />
+            {function() {
+              if (this.props.login_Reducer != "0") {
+                return <HeaderLoggedIn />;
+              }
+              else {
+                return <Header />;
+              }
+            }}
             {/* <Route path="/Item/:slug" component={ItemPage} /> */}
             <Route exact path="/" component={Context} />
             <Route exact path="/login" component={Login} />
