@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -7,10 +8,60 @@ import { bindActionCreators } from "redux";
 import "./BuyerInfo.css";
 
 class BuyerInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      street: "",
+      zip: "",
+      city: ""
+    };
+  }
+  handleInfo() {
+    const firstName = this.state.firstName;
+    const lastName = this.state.lastName;
+    const email = this.state.email;
+    const street = this.state.street;
+    const zip = this.state.zip;
+    const city = this.state.city;
+
+    axios
+      .post("/api/confirmInfo", {
+        firstName,
+        lastName,
+        email,
+        street,
+        zip,
+        city
+      })
+      .then(res => {
+        console.log(res);
+        // Die response enthält die Customer Id. Speicher die in einem Redux Reducer um später zu wissen wer gerade drin ist.
+      });
+  }
+  onFormChange_firstName = event => {
+    this.setState({ firstName: event.target.value });
+  };
+  onFormChange_lastName = event => {
+    this.setState({ lastName: event.target.value });
+  };
+  onFormChange_Email = event => {
+    this.setState({ email: event.target.value });
+  };
+  onFormChange_Street = event => {
+    this.setState({ street: event.target.value });
+  };
+  onFormChange_Zip = event => {
+    this.setState({ zip: event.target.value });
+  };
+  onFormChange_City = event => {
+    this.setState({ city: event.target.value });
+  };
   render() {
-    /* Switch === 0 back */
-    /* !TESTMODE! */
-    if (this.props.Cart_Items === 1) {
+    /* TEST MODE! */
+    if (this.props.Cart_Items.Id.length === 1) {
       return (
         <div className="container cart">
           <div className="cartItems">
@@ -28,31 +79,55 @@ class BuyerInfo extends Component {
             <div className="BuyerInfo">
               <form action="">
                 <div className="element" id="firstName">
-                  <label htmlFor="firstName">Vorname</label>
-                  <input id="firstName " type="text" />
+                  <input
+                    id="firstName "
+                    type="text"
+                    placeholder="Vorname"
+                    onChange={this.onFormChange_firstName}
+                  />
                 </div>
                 <div className="element" id="lastName">
-                  <label htmlFor="lastName">Nachname</label>
-                  <input id="lastName " type="text" />
+                  <input
+                    id="lastName "
+                    type="text"
+                    placeholder="Nachname"
+                    onChange={this.onFormChange_lastName}
+                  />
                 </div>
                 <div className="element" id="email">
-                  <label htmlFor="email">Email</label>
-                  <input id="email" type="text" />
+                  <input
+                    id="email"
+                    type="text"
+                    placeholder="Email"
+                    onChange={this.onFormChange_Email}
+                  />
                 </div>
                 <div className="element" id="Street">
-                  <label htmlFor="Street">Straße & Hausnummer</label>
-                  <input id="Street" type="text" />
+                  <input
+                    id="street"
+                    type="text"
+                    placeholder="Straße & Hausnummer"
+                    onChange={this.onFormChange_Street}
+                  />
                 </div>
                 <div className="element" id="ZipCode">
-                  <label htmlFor="ZipCode">Postleitzahl</label>
-                  <input id="ZipCode" type="text" />
+                  <input
+                    id="zip"
+                    type="text"
+                    placeholder="Postleitzahl"
+                    onChange={this.onFormChange_Zip}
+                  />
                 </div>
                 <div className="element" id="Town">
-                  <label htmlFor="Town">Stadt</label>
-                  <input id="Town" type="text" />
+                  <input
+                    id="city"
+                    type="text"
+                    placeholder="Stadt"
+                    onChange={this.onFormChange_City}
+                  />
                 </div>
-                <div className="button">
-                  <Link to="/checkorder">Bestätigen</Link>
+                <div className="checkButton">
+                  <button onClick={this.handleInfo}>Bestätigen</button>
                 </div>
               </form>
             </div>
@@ -66,10 +141,7 @@ class BuyerInfo extends Component {
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {
   return {
-    Purchase_State: state.Purchase_State,
-    Cart_Items: state.Cart_Items,
-    Name_Items: state.Name_Items,
-    Price_Items: state.Price_Items
+    Cart_Items: state.Cart_Items
   };
 }
 

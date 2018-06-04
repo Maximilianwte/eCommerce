@@ -39,7 +39,7 @@ class HeaderLoggedIn extends Component {
           </div>
           <div className="rightSide">
             <div className="Login">
-              <Link to="/login">LOGIN</Link>
+              <Link to="/Account">MY ACCOUNT</Link>
             </div>
             <div className="Cart">
               <Link to="/Cart">

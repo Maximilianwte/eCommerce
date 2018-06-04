@@ -14,7 +14,7 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item_Name: []
+      item_Name: [],
     };
   }
   getOrder = async () => {
@@ -33,14 +33,15 @@ class Cart extends Component {
       console.log(res);
     });
   };
-  componentDidMount() {
-    const nextState = this.props.Cart_Items.Id.map((item, i) => {
+  
+  componentDidMount = () => {
+    var nextState = this.props.Cart_Items.Id.map((item, i) => {
       if (item === "001") {
         return "Buddha";
       } else {
       }
     });
-    this.setState({ item_name: nextstate });
+    this.setState({ item_Name: nextState });
   }
   render() {
     if (this.props.Login_State === 1) {
@@ -97,6 +98,7 @@ class Cart extends Component {
     }
   }
 }
+
 
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 
+import { connect } from "react-redux";
+
 import ScrollToTop from "./ScrollToTop";
 
 import "./App.css";
@@ -8,6 +10,7 @@ import "./App.css";
 import Header from "./Components/Header/Header";
 import HeaderLoggedIn from "./Components/Header/HeaderLoggedIn";
 import Footer from "./Components/Footer/Footer";
+import FooterLoggedIn from "./Components/Footer/FooterLoggedIn";
 import Context from "./Components/Context/Context";
 /* import ItemPage from "./Components/ItemPage/ItemPage"; */
 import ItemPageBuddha from "./Components/ItemPage/ItemPageBuddha";
@@ -18,19 +21,28 @@ import OrderSummary from "./Components/SalesProcess/OrderSummary/OrderSummary";
 import Payment from "./Components/SalesProcess/Payment/Payment";
 
 class App extends Component {
+  renderHeader() {
+    if (this.props.Login_State === 1) {
+      return <HeaderLoggedIn />;
+    }
+    else {
+      return <Header />;
+  }
+}
+  renderFooter() {
+    if (this.props.Login_State === 1) {
+      return <FooterLoggedIn />;
+    }
+    else {
+      return <Footer />;
+  }
+  }
   render() {
     return (
       <BrowserRouter>
         <ScrollToTop>
-          <div className="App">
-            {function() {
-              if (this.props.login_Reducer != "0") {
-                return <HeaderLoggedIn />;
-              }
-              else {
-                return <Header />;
-              }
-            }}
+         <div className="App">
+            {this.renderHeader()}
             {/* <Route path="/Item/:slug" component={ItemPage} /> */}
             <Route exact path="/" component={Context} />
             <Route exact path="/login" component={Login} />
@@ -39,7 +51,7 @@ class App extends Component {
             <Route exact path="/checkorder" component={OrderSummary} />
             <Route exact path="/payment" component={Payment} />
             <Route path="/Buddha" component={ItemPageBuddha} />
-            <Footer />
+            {this.renderFooter()}
           </div>
         </ScrollToTop>
       </BrowserRouter>
@@ -47,4 +59,11 @@ class App extends Component {
   }
 }
 
-export default App;
+// Data from our Store gets passed into Props here.
+function mapStateToProps(state) {
+  return {
+    Login_State: state.Login_State
+  };
+}
+
+export default connect(mapStateToProps)(App);

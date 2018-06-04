@@ -35,6 +35,7 @@ app.use(cors());
 require("./routes/authRoutes")(app);
 require("./routes/dataRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/salesRoutes")(app);
 
 // Get the Port from Heroku or if not declared use 5000.
 const PORT = process.env.PORT || 5000;

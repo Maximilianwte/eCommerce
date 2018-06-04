@@ -17,6 +17,9 @@
 form {
   font-size: 1.2em;
   width: 100%;
+  background-color: #fce9ee;
+  margin-bottom: 5em;
+  padding: 1em 0;
 }
 
 input {
