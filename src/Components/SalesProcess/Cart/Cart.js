@@ -44,7 +44,7 @@ class Cart extends Component {
     this.setState({ item_Name: nextState });
   }
   render() {
-    if (this.props.Login_State === 1) {
+    if (this.props.Login_State != "0") {
       if (this.props.Cart_Items === 0) {
         return (
           <div className="highlightCard cart">

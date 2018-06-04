@@ -20,6 +20,7 @@ class BuyerInfo extends Component {
     };
   }
   handleInfo() {
+    const id = this.props.Login_State
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
     const email = this.state.email;
@@ -29,6 +30,7 @@ class BuyerInfo extends Component {
 
     axios
       .post("/api/confirmInfo", {
+        id,
         firstName,
         lastName,
         email,
@@ -38,7 +40,7 @@ class BuyerInfo extends Component {
       })
       .then(res => {
         console.log(res);
-        // Die response enthält die Customer Id. Speicher die in einem Redux Reducer um später zu wissen wer gerade drin ist.
+        window.location.href = "/payment";
       });
   }
   onFormChange_firstName = event => {
@@ -141,7 +143,8 @@ class BuyerInfo extends Component {
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {
   return {
-    Cart_Items: state.Cart_Items
+    Cart_Items: state.Cart_Items,
+    Login_State: state.Login_State
   };
 }
 

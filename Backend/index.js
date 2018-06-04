@@ -10,6 +10,7 @@ require("./models/Customers");
 require("./models/Items");
 require("./models/Orders");
 require("./services/passport");
+require("./services/payment");
 require("./Database_SQL/Database");
 
 const app = express()

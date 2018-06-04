@@ -3,6 +3,8 @@ import axios from "axios";
 
 import { connect } from "react-redux";
 
+import { login_state } from "../../Store/Actions";
+
 import "./Login.css";
 
 class Login extends Component {
@@ -18,7 +20,12 @@ class Login extends Component {
     const password = this.state.password;
     axios.post("/auth/try_login", { email, password }).then(res => {
       console.log(res);
-      // Die response enthält die Customer Id. Speicher die in einem Redux Reducer um später zu wissen wer gerade drin ist.
+      if (res != undefined) {
+        this.props.onLogin(
+          // We take the customer id from mongoose and the response body.
+          res.body.id
+        );
+      }
     });
   };
   onFormChange_Email = event => {
@@ -69,7 +76,7 @@ class Login extends Component {
           <form action="">
             <div className="element" id="email">
               <input
-                id="email "
+                id="email"
                 type="text"
                 placeholder="email"
                 onChange={this.onFormChange_Email}
@@ -78,7 +85,7 @@ class Login extends Component {
 
             <div className="element" id="password">
               <input
-                id="password "
+                id="password"
                 type="password"
                 placeholder="password"
                 onChange={this.onFormChange_Password}
@@ -100,6 +107,8 @@ function mapStateToProps(state) {
 }
 
 // We connect our components function (onSelectMood) to the actionCreator (selectMood)
-const mapActionsToProps = {};
+const mapActionsToProps = {
+  onLogin: login_state
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(Login);

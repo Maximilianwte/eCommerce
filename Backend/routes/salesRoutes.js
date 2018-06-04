@@ -7,23 +7,25 @@ const Order = mongoose.model("Orders");
 module.exports = app => {
   // Process the order that the user sends. Req.user is the user string that is send with the request from the client side.
   app.post("/api/confirmInfo", (req, res) => {
+    console.log(req.body);
     if (!req.user) {
     } else {
-      const { _customerId, _itemId } = req.body;
-
-      /*   // While there are items in the order add all prices up.
-      const orderValueVar
-      const orderValue = while (itemId) {
-       orderValueVar = orderValueVar + item.price
-      } */
-      const Customer = new Customer({
-        _customerId: req.user.id,
-        // Maybe wrong and we just have to use _itemId,
-        _itemId: Items.split(",").map(id => ({ id: id.trim() })),
-        // value: orderValue,
-        date: Date.now()
+      Customer.findOne({ _id: req.body.id }).then(existingCustomer => {
+        if (existingCustomer) {
+          existingCustomer.update({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            street: req.body.street,
+            zip: req.body.zip,
+            city: req.body.city,
+            country: "Germany"
+          }).save()
+          .then(res.send("Success!"));
+        
+        } else {
+        }
       });
     }
   });
-
 };
