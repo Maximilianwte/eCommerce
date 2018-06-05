@@ -33,7 +33,7 @@ class Payment extends Component {
     this.setState({ braintreeClientId: body.braintreeClientId });
   };
   handleCheckout() {
-    var button = document.querySelector('#submit');
+    var button = document.querySelector("#submit");
     braintree.dropin.create(
       {
         authorization: this.state.braintreeClientId,
@@ -52,10 +52,16 @@ class Payment extends Component {
   render() {
     return (
       <div className="container cart">
-        <div id="dropin-container" />
-        <h2>Bezahlverfahren</h2>
-        <div className="checkButton">
-          <button id="submit" onClick={this.handleCheckout}>Bezahlen</button>
+        <div className="row">
+          <div className="col-12">
+            <div id="dropin-container" />
+            <h2>Bezahlverfahren</h2>
+            <div className="checkButton">
+              <button id="submit" onClick={this.handleCheckout}>
+                Bezahlen
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

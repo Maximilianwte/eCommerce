@@ -3,14 +3,15 @@
   height: 4em;
   top: 0%;
   width: 100%;
-  background-color: #222222;
   background: linear-gradient(175deg, #363636, #222222);
-  
+
   box-shadow: #2727275b 0px 3px 10px;
 }
 
 .sideBar a {
-  color: var(--color-main);
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  font-size: 1.05em;
 }
 
 .sideBar a:hover {
@@ -26,7 +27,8 @@
   justify-content: space-between;
 }
 
-.leftSide, .rightSide {
+.leftSide,
+.rightSide {
   width: 10rem;
   display: flex;
   justify-content: space-around;
@@ -50,7 +52,7 @@
   fill: rgba(255, 255, 255, 0.911);
 }
 
-.Cart a{
+.Cart a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,6 +62,6 @@
 .Cart svg {
   fill: none;
   stroke: white;
-  stroke-width: .3em;
+  stroke-width: 0.3em;
   height: 1.3em;
 }

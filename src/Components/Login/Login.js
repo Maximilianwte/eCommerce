@@ -19,14 +19,14 @@ class Login extends Component {
     const email = this.state.email;
     const password = this.state.password;
     axios.post("/auth/try_login", { email, password }).then(res => {
-      console.log(res);
-      if (res != undefined) {
+      if (res.data != undefined) {
         this.props.onLogin(
           // We take the customer id from mongoose and the response body.
-          res.body.id
+          res.data
         );
       }
     });
+    console.log("req send.");
   };
   onFormChange_Email = event => {
     this.setState({ email: event.target.value });
@@ -54,7 +54,7 @@ class Login extends Component {
           <div className="LoginWith">
             <div className="facebook">
               <div
-                class="fb-login-button"
+                className="fb-login-button"
                 data-max-rows="1"
                 data-size="large"
                 data-button-type="login_with"
@@ -103,7 +103,9 @@ class Login extends Component {
 
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {
-  return {};
+  return {
+    Login_State: state.Login_State
+  };
 }
 
 // We connect our components function (onSelectMood) to the actionCreator (selectMood)
@@ -111,4 +113,7 @@ const mapActionsToProps = {
   onLogin: login_state
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Login);

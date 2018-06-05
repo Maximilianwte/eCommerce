@@ -1,5 +1,6 @@
 .inletContainer h2 {
   grid-column: span 2;
+  margin-top: 3em;
 }
 
 .BuyerInfo {
@@ -18,8 +19,7 @@ form {
   font-size: 1.2em;
   width: 100%;
   background-color: #fce9ee;
-  margin-bottom: 5em;
-  padding: 1em 0;
+  padding: 1em 0 0 0;
 }
 
 input {
@@ -50,4 +50,10 @@ input:focus {
 .button input:hover {
   color: #ff5582;
   border: .3em solid #ff5582;
+}
+
+#belowForm {
+  background-color:#fce9ee;
+  padding-bottom: 2em;
+  margin-bottom: 5em;
 }

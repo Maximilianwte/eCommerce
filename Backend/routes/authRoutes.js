@@ -10,13 +10,15 @@ module.exports = app => {
 
   // Signin via email
   app.post("/auth/try_login", (req, res) => {
-    /*     console.log(req.body); */
+    console.log("Backend Console: Try Reached");
     Customer.findOne({
-      Email: req.body.email,
-      Password: req.body.password
-    }).exec(function(err, customer) {
-      if (err) return handleError(err);
-      res.send(customer._customerId);
+      email: req.body.email,
+      password: req.body.password
+    }).then(existingCustomer => {
+      if (existingCustomer) {
+        console.log("Backend Console:" + existingCustomer);
+        res.send(existingCustomer._id);
+      }
     });
   });
 
@@ -47,8 +49,3 @@ module.exports = app => {
     }
   );
 };
-
-/* Customer.findOne({"Email": "maximilianwitte@live.de" , "Password": "007007"}).exec(function(err, customer) {
-  if (err) return handleError(err);
-  console.log(customer._id);
-}); */

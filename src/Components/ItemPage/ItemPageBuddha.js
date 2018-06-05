@@ -58,6 +58,7 @@ class ItemPageBuddha extends Component {
         <div className="right">
           <h2>Unser</h2>
           <h3>Buddha.</h3>
+          <h6>Lieferzeit: 3 Tage</h6>
           <div className="quantityButton">
             <button id="decrease" onClick={this.changeQuantity}>
               -

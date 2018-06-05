@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { connect } from "react-redux";
@@ -13,44 +12,42 @@ class BuyerInfo extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      email: "",
       street: "",
       zip: "",
-      city: ""
+      city: "",
+      country: ""
     };
   }
-  handleInfo() {
-    const id = this.props.Login_State
+  handleInfo = () => {
+    const id = this.props.Login_State;
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
-    const email = this.state.email;
     const street = this.state.street;
     const zip = this.state.zip;
     const city = this.state.city;
+    const country = this.state.country;
 
     axios
       .post("/api/confirmInfo", {
         id,
         firstName,
         lastName,
-        email,
         street,
         zip,
-        city
+        city,
+        country
       })
       .then(res => {
         console.log(res);
         window.location.href = "/payment";
       });
-  }
+    console.log("Req Send");
+  };
   onFormChange_firstName = event => {
     this.setState({ firstName: event.target.value });
   };
   onFormChange_lastName = event => {
     this.setState({ lastName: event.target.value });
-  };
-  onFormChange_Email = event => {
-    this.setState({ email: event.target.value });
   };
   onFormChange_Street = event => {
     this.setState({ street: event.target.value });
@@ -60,6 +57,9 @@ class BuyerInfo extends Component {
   };
   onFormChange_City = event => {
     this.setState({ city: event.target.value });
+  };
+  onFormChange_Country = event => {
+    this.setState({ country: event.target.value });
   };
   render() {
     /* TEST MODE! */
@@ -96,14 +96,6 @@ class BuyerInfo extends Component {
                     onChange={this.onFormChange_lastName}
                   />
                 </div>
-                <div className="element" id="email">
-                  <input
-                    id="email"
-                    type="text"
-                    placeholder="Email"
-                    onChange={this.onFormChange_Email}
-                  />
-                </div>
                 <div className="element" id="Street">
                   <input
                     id="street"
@@ -128,10 +120,18 @@ class BuyerInfo extends Component {
                     onChange={this.onFormChange_City}
                   />
                 </div>
-                <div className="checkButton">
-                  <button onClick={this.handleInfo}>Bestätigen</button>
+                <div className="element" id="country">
+                  <input
+                    id="country"
+                    type="text"
+                    placeholder="Land"
+                    onChange={this.onFormChange_Country}
+                  />
                 </div>
               </form>
+              <div className="checkButton" id="belowForm">
+                <button onClick={this.handleInfo}>Bestätigen</button>
+              </div>
             </div>
           </div>
         </div>
@@ -153,4 +153,7 @@ const mapActionsToProps = {
   // onSelectMood: selectMood
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(BuyerInfo);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(BuyerInfo);
