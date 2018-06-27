@@ -15,7 +15,7 @@ const Order = mongoose.model("Orders");
 Order.findOne({ _customerId: "1"}).then(orders => console.log(orders)); */
 
 module.exports = app => {
-  // Api get Items from MongoDB.
+  // Get all selling items from Database
   app.get("/api/getItems", (req, res) => {
     Items.findOne().exec(function(err, items) {
       if (err) return handleError(err);
@@ -23,7 +23,7 @@ module.exports = app => {
     });
   });
 
-  // Api get orders from active client. This is used for ORDERS from ACCOUNT.
+  // Get all orders the user account has ever made.
   app.get("/api/getOrders", (req, res) => {
     Order.find({ _customerId: "001" }).exec(function(err, orders) {
       if (err) return handleError(err);

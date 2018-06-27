@@ -31,6 +31,7 @@ module.exports = app => {
     }
   });
 };
-
-Customer.findOne({_id: '5b168ec71bcca10a1e1a1c13'}).then(i => {console.log(i)})
+// Weirdly the query fails when I write test@test.de but when I copy the same test@test.de from mlab it works.
+// I still dont know how to query the _id
+// Customer.findOne({_id: '5b168ec71bcca10a1e1a1c13'}).then(i => {console.log(i)})
 /* Customer.findOne({email: "test@test.de"}).then(i => {console.log(i)}) */

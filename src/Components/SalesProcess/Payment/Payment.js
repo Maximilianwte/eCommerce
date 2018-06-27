@@ -56,6 +56,20 @@ class Payment extends Component {
           <div className="col-12">
             <div id="dropin-container" />
             <h2>Bezahlverfahren</h2>
+            <form action="your-server-side-code" method="POST">
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="pk_test_n8r1i121UbCQEUWg1lUbcbN0"
+                data-amount="999"
+                data-name="Demo Site"
+                data-description="Widget"
+                data-zip-code="true"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto"
+                data-currency="eur"
+              />
+            </form>
             <div className="checkButton">
               <button id="submit" onClick={this.handleCheckout}>
                 Bezahlen

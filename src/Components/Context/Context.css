@@ -2,6 +2,39 @@
   width: 100%;
 }
 
+/* SVG Logo */
+
+.fullPage svg {
+  height: 13em;
+  margin-top: 8em;
+}
+
+.cls-c1 {
+  fill: #abffcd;
+}
+
+.cls-c2 {
+  fill: none;
+  stroke: #f9a5c1;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+}
+
+.cls-c3 {
+  fill: #f9a5c1;
+}
+
+.cls-c4 {
+  fill: #44d8d4;
+}
+
+.fullPage {
+  background-image: url("../../Assets/Background.jpg");
+  background-size: cover;
+  background-position-y: 30%;
+  height: 100vh;
+}
+
 .StoreItems a {
   margin-top: 0.5em;
 }
@@ -71,3 +104,4 @@ ul {
     height: 40vw;
   }
 }
+

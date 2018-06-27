@@ -37,7 +37,7 @@ module.exports = app => {
     res.send(req.user);
   });
 
-  // Facebook oAuth
+  // Route Handler for Facebook oAuth
   app.get("/auth/facebook", passport.authenticate("facebook"));
 
   app.get(

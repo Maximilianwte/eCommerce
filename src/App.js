@@ -12,7 +12,7 @@ import Header from "./Components/Header/Header";
 import HeaderLoggedIn from "./Components/Header/HeaderLoggedIn";
 import Footer from "./Components/Footer/Footer";
 import FooterLoggedIn from "./Components/Footer/FooterLoggedIn";
-import Context from "./Components/Context/Context";
+import Context from "./Components/Context/Context1";
 /* import ItemPage from "./Components/ItemPage/ItemPage"; */
 import ItemPageBuddha from "./Components/ItemPage/ItemPageBuddha";
 import Login from "./Components/Login/Login";
