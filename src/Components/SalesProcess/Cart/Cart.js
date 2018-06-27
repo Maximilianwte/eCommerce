@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 import axios from "axios";
 
@@ -15,7 +14,18 @@ class Cart extends Component {
     super(props);
     this.state = {
       item_Name: [],
+      charge: this.priceReducer()
     };
+  }
+  sumAmount(total, num) {
+    return total + num;
+  }
+  priceReducer() {
+    if (this.props.Cart_Items.Price != 0) {
+      return this.props.Cart_Items.Price.reduce(this.sumAmount);
+    } else {
+      return "0";
+    }
   }
   getOrder = async () => {
     const response = await fetch("/api/getOrders");
@@ -33,7 +43,16 @@ class Cart extends Component {
       console.log(res);
     });
   };
-  
+  postPayment = () => {
+    const customerId = this.props.Login_State;
+
+    const charge = this.state.charge;
+    console.log(charge);
+    axios.post("/api/processPayment", { customerId, charge }).then(res => {
+      console.log(res);
+    });
+  };
+
   componentDidMount = () => {
     var nextState = this.props.Cart_Items.Id.map((item, i) => {
       if (item === "001") {
@@ -42,7 +61,7 @@ class Cart extends Component {
       }
     });
     this.setState({ item_Name: nextState });
-  }
+  };
   render() {
     if (this.props.Login_State != "0") {
       if (this.props.Cart_Items === 0) {
@@ -90,6 +109,9 @@ class Cart extends Component {
             <div className="checkButton">
               <button onClick={this.postOrder}>Test_postOrder</button>
             </div>
+            <div className="checkButton">
+              <button onClick={this.postPayment}>Test_postPayment</button>
+            </div>
           </div>
         );
       }
@@ -98,7 +120,6 @@ class Cart extends Component {
     }
   }
 }
-
 
 // Data from our Store gets passed into Props here.
 function mapStateToProps(state) {
@@ -113,4 +134,7 @@ const mapActionsToProps = {
   // onSelectMood: selectMood
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Cart);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Cart);

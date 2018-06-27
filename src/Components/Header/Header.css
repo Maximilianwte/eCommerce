@@ -3,19 +3,19 @@
   height: 4em;
   top: 0%;
   width: 100%;
-  background: linear-gradient(175deg, #363636, #222222);
+ /*  background: linear-gradient(175deg, #363636, #222222);
 
-  box-shadow: #2727275b 0px 3px 10px;
+  box-shadow: #2727275b 0px 3px 10px; */
 }
 
 .sideBar a {
-  color: #ffffff;
+  color: #554b3e;
   letter-spacing: 0.05em;
   font-size: 1.05em;
 }
 
 .sideBar a:hover {
-  color: #f3e0e0;
+  color: #9b8a74;
 }
 
 .inlet {

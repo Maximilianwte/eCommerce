@@ -20,7 +20,7 @@ class Context extends Component {
     return (
       <div className="Store">
         <div className="fullPage">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 116">
+          {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 116">
             <defs />
             <g id="Ebene_2" data-name="Ebene 2">
               <g id="Ebene_1-2" data-name="Ebene 1">
@@ -64,7 +64,7 @@ class Context extends Component {
                 />
               </g>
             </g>
-          </svg>{" "}
+          </svg>{" "} */}
         </div>
         <div className="highlightCard">
           <Link to={"/Buddha"}>
