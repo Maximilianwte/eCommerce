@@ -18,6 +18,7 @@ module.exports = app => {
       if (existingCustomer) {
         console.log("Backend Console:" + existingCustomer);
         res.send(existingCustomer._id);
+        res.redirect("/");
       }
     });
   });

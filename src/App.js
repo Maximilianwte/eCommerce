@@ -20,10 +20,12 @@ import Cart from "./Components/SalesProcess/Cart/Cart";
 import BuyerInfo from "./Components/SalesProcess/BuyerInfo/BuyerInfo";
 import OrderSummary from "./Components/SalesProcess/OrderSummary/OrderSummary";
 import Payment from "./Components/SalesProcess/Payment/Payment";
+import MyAccount from "./Components/Customer/MyAccount";
+import OrderHistory from "./Components/Customer/OrderHistory";
 
 class App extends Component {
   renderHeader() {
-    if (this.props.Login_State === 1) {
+    if (this.props.Login_State === "0001" ) {
       return <HeaderLoggedIn />;
     }
     else {
@@ -52,6 +54,8 @@ class App extends Component {
             <Route exact path="/checkorder" component={OrderSummary} />
             <Route exact path="/payment" component={Payment} />
             <Route path="/Buddha" component={ItemPageBuddha} />
+            <Route exact path="/account" component={MyAccount} />
+            <Route exact path="/orders" component={OrderHistory} />
             {this.renderFooter()}
           </div>
         </ScrollToTop>
