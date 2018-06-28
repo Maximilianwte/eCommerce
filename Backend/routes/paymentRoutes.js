@@ -26,9 +26,9 @@ module.exports = app => {
             });
           })
           .then(function(source) {
-            console.log("Charge Created. Amount Charged: " + charge);
+            console.log("Charge Created. Amount Charged: " + charge.toFixed(0));
             return stripe.charges.create({
-              amount: charge,
+              amount: charge.toFixed(0),
               currency: "eur",
               customer: source.customer
             });

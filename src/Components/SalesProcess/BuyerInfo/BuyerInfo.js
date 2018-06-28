@@ -18,6 +18,7 @@ class BuyerInfo extends Component {
       country: ""
     };
   }
+  // Update Customer Data
   handleInfo = () => {
     const id = this.props.Login_State;
     const firstName = this.state.firstName;
@@ -28,7 +29,7 @@ class BuyerInfo extends Component {
     const country = this.state.country;
 
     axios
-      .post("/api/confirmInfo", {
+      .post("/api/updateCustomer", {
         id,
         firstName,
         lastName,
@@ -41,8 +42,29 @@ class BuyerInfo extends Component {
         console.log(res);
         window.location.href = "/payment";
       });
-    console.log("Req Send");
+
+      this.postOrder()
   };
+
+  // Post Pending Order to Database.
+  postOrder = () => {
+    const id = this.props.Login_State;
+    const itemId = this.props.Cart_Items.Id;
+    const value_item = this.props.Cart_Items.Price;
+    const amount = this.props.Cart_Items.Amount;
+
+    axios
+      .post("/api/processOrder", {
+        id,
+        itemId,
+        value_item,
+        amount
+      })
+      .then(res => {
+        console.log(res);
+      });
+  };
+
   onFormChange_firstName = event => {
     this.setState({ firstName: event.target.value });
   };
@@ -63,7 +85,7 @@ class BuyerInfo extends Component {
   };
   render() {
     /* TEST MODE! */
-    if (this.props.Cart_Items.Id.length === 1) {
+    if (this.props.Cart_Items.Id.length === 0) {
       return (
         <div className="container cart">
           <div className="cartItems">

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const Customer = mongoose.model("Customers");
-const Item = mongoose.model("Items");
 const Order = mongoose.model("Orders");
 
 /* new Order({
@@ -10,9 +9,6 @@ const Order = mongoose.model("Orders");
  value: "19.99€",
  date: Date.now()
 }).save() */
-
-/* // Working Query without the get handling.
-Order.findOne({ _customerId: "1"}).then(orders => console.log(orders)); */
 
 module.exports = app => {
   // Get all selling items from Database
@@ -24,32 +20,37 @@ module.exports = app => {
   });
 
   // Get all orders the user account has ever made.
-  app.get("/api/getOrders", (req, res) => {
-    Order.find({ _customerId: "001" }).exec(function(err, orders) {
-      if (err) return handleError(err);
-      res.send(orders);
+  app.post("/api/getOrders", (req, res) => {
+    const client_id = req.body.customerId;
+
+    Order.find({ _customerId: client_id }).then(orders => {
+      if (!err) {
+        if (orders) {
+          res.send(orders);
+        } else {
+          console.log("Database 404: No Orders Found.");
+        }
+      } else {
+        throw err;
+      }
     });
   });
 
-  // Process the order that the user sends. Req.user is the user string that is send with the request from the client side.
-  app.post("/api/processOrder", (req, res) => {
-    if (!req.user) {
-    } else {
-      const { _customerId, _itemId } = req.body;
+  // Get all orders the user account has ever made.
+  app.post("/api/getCustomerInfo", (req, res) => {
+    const client_id = req.body.customerId;
 
-      /*   // While there are items in the order add all prices up.
-      const orderValueVar
-      const orderValue = while (itemId) {
-       orderValueVar = orderValueVar + item.price
-      } */
-      const order = new Order({
-        _customerId: req.user.id,
-        // Maybe wrong and we just have to use _itemId,
-        _itemId: Items.split(",").map(id => ({ id: id.trim() })),
-        // value: orderValue,
-        date: Date.now()
-      });
-    }
+    Customer.findOne({ _customerId: client_id }).then(customer => {
+      if (!err) {
+        if (customer) {
+          res.send(customer);
+        } else {
+          console.log("Database 404: No Orders Found.");
+        }
+      } else {
+        throw err;
+      }
+    });
   });
 
   // HERE WE HANDLER A AXIOS POST REQUEST FOR TESTING PURPOSES.
@@ -60,3 +61,4 @@ module.exports = app => {
     res.send(`You sent: ${body} to Express`);
   });
 };
+
